@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+      - "5000:5000"
+    environment:
+      - PORT=3000
+      - Mongo_url=mongodb+srv://muskanjain:anjuanjali@ac-ig0uexf-shard-00-00.hgyvyuj.mongodb.net:27017,ac-ig0uexf-shard-00-01.hgyvyuj.mongodb.net,ac-ig0uexf-shard-00-02.hgyvyuj.mongodb.net/test?ssl=true&replicaSet=atlas-yr261n-shard-0&authSource=admin&appName=Cluster0
+      - JWT_Secret=7041771756e838066d47629c081258c81906c988
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
