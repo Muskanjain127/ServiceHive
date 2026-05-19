@@ -1,3 +1,5 @@
+import crypto from "crypto";
+(global as any).crypto=crypto;
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
