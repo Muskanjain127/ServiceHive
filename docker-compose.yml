@@ -8,8 +8,8 @@ services:
       - "5000:5000"
     environment:
       - PORT=3000
-      - Mongo_url=mongodb+srv://muskanjain:<db_password>@cluster0.hgyvyuj.mongodb.net/?appName=Cluster0
-      - JWT_Secret=7041771756e838066d47629c081258c81906c988
+      - Mongodb_URL=${Mongo_url}
+      - JWT_Secret=${JWT_Secret}     
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
